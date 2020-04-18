@@ -57,7 +57,8 @@ headings = [th.get_text() for th in tables[0].find("tr").find_all("th")]
 # print(headings)
 
 final_data = "#Categories\n"
-# print(header)
+final_data += "\n"
+
 heading_text = "| Checkbox | ID  | Category | Problems Count |\n"
 
 final_data += heading_text
@@ -70,19 +71,22 @@ for row in tables[0].find_all("tr")[1:]:
     link = "{}".format(name)
     problems_count = tds[2].get_text()
     dataset = [id, name, link, problems_count]
-    final_data += "|<ul><li>- [ ] Done</li></ul>|{}|[{}]({}/README.md)|{}|\n".format(
-        id, name, urllib.parse.quote_plus(link), problems_count)
     dir_name = re.sub('[\,\\\/\&\?\(\)]', ' ', name).rstrip()
     dir_name = re.sub(' +', '_', dir_name)
     dir_name = "{}. {}".format(id.zfill(3), dir_name)
+    final_data += "|<ul><li>- [ ] Done</li></ul>|{}|[{}]({}/README.md)|{}|\n".format(
+        id, name, urllib.parse.quote(dir_name), problems_count)
     # print(dir_name)
     # os.mkdir("categories/{}. {}".format(id.zfill(3), dir_name))
     category_link = base_url + tds[1].find('a').get('href')
     print(dir_name)
-    print(get_problems(dir_name, category_link))
+    if write_to_file:
+        print(get_problems(dir_name, category_link))
 
-# print(datasets)
-# print(final_data)
-# file = open(os.path.join("categories", "README.md"), 'w')
-# file.write(final_data)
-# file.close()
+print(final_data)
+if write_to_file:
+    file = open(os.path.join("categories", "README.md"), 'w')
+    file.write(final_data)
+    file.close()
+
+print("Done")
