@@ -31,3 +31,8 @@
 |<ul><li>- [ ] Done</li></ul>|8|[Codeforces Div. 2, E](ladders/08.%20Codeforces%20Div.%202%2C%20E/README.md)|100|
 |<ul><li>- [ ] Done</li></ul>|9|[Codeforces Div. 1, D](ladders/09.%20Codeforces%20Div.%201%2C%20D/README.md)|100|
 |<ul><li>- [ ] Done</li></ul>|10|[Codeforces Div. 1, E](ladders/10.%20Codeforces%20Div.%201%2C%20E/README.md)|100|
+
+## Usage
+simply fork the repo and work on your own on the problems and add your checkmarks.
+
+### Thanks
